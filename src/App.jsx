@@ -1,11 +1,28 @@
-import './App.css'
-import Form from './components/Form'
+import React from 'react';
+import './App.css';
+import Form from './components/Form';
 
 function App() {
+  const [data, setData] = React.useState({
+    personal: {
+      name: "",
+      lastName: "",
+      email: "", 
+      phone: "",
+      age: "" 
+    },
+    education: {
+
+    },
+    experience: {
+      
+    }
+  });
+  
   return (
-    <>
-      <Form></Form>
-    </>
+    <div className="container" data={data}>
+      <Form/>
+    </div>
   )
 }
 
