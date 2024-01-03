@@ -6,7 +6,7 @@ const data = {
     phone: '',
     age: '',
   },
-  education: {},
+  education: [],
   experience: {},
 }
 

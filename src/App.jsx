@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import PersonalInfoForm from './components/form/PersonalInfoForm';
 import EducationForm from './components/form/EducationForm';
@@ -9,18 +9,40 @@ import EducationSection from './components/cv/EducationSection';
 import ExperienceSection from './components/cv/ExperienceSection';
 
 function App() {
-  const [personal, setPersonal] = React.useState(data.personal);
+  const [personal, setPersonal] = useState(data.personal);
+  const [education, setEducation] = useState(data.education);
+  const [educationData, setEducationData] = useState({
+    name: '',
+    title: '',
+    from: '',
+    to: '',
+  });
+  const [experience, setExperience] = useState(data.experience);
+  const [expData, setExpData] = useState({
+    company: '',
+    title: '',
+    from: '',
+    to: '',
+    desc: '',
+  });
+  const [edit, setEdit] = useState(True);
 
-  const handlePersonalInfoChange = e => {
+  const handleInputChange = (e, setState) => {
     console.log('Change event triggered');
     const { name, value } = e.target;
-    setPersonal(prevPersonal => ({
-      ...prevPersonal,
+    setState(prevState => ({
+      ...prevState,
       [name]: value,
     }));
-
-    console.log(personal);
   };
+
+  const handleAdd = (e, setState, obj) => {
+    e.preventDefault();
+    setState(prev => [...prev, obj]);
+  };
+
+  console.log(expData);
+  console.log(experience);
 
   return (
     <div className="container">
@@ -28,11 +50,21 @@ function App() {
         <form action="">
           <PersonalInfoForm
             personalInfo={personal}
-            onPersonalInfoChange={handlePersonalInfoChange}
+            onPersonalInfoChange={e => handleInputChange(e, setPersonal)}
           />
-          <EducationForm />
-          <ExperienceForm />
-          <input type="submit" value="Submit" />
+          <EducationForm
+            education={educationData}
+            onButtonClick={e => handleAdd(e, setEducation, educationData)}
+            onEducationChange={e => handleInputChange(e, setEducationData)}
+          />
+          <ExperienceForm
+            data={expData}
+            j
+            onAdd={e => handleAdd(e, setExperience, expData)}
+            onInputChange={e => handleInputChange(e, setExpData)}
+          />
+          <button>Edit</button>
+          <button>Submit</button>
         </form>
       </div>
       <div className="cv-container">
