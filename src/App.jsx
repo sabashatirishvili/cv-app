@@ -2,11 +2,12 @@ import { useState } from 'react';
 import './App.css';
 import PersonalInfoForm from './components/form/PersonalInfoForm';
 import EducationForm from './components/form/EducationForm';
-import ExperienceForm from './components/form/ExperienceForm';
 import data from './data';
 import PersonalInfoSection from './components/cv/PersonalInfoSection';
 import EducationSection from './components/cv/EducationSection';
 import ExperienceSection from './components/cv/ExperienceSection';
+import Menu from './components/Menu';
+import Footer from './components/Footer';
 
 function App() {
   const [personal, setPersonal] = useState(data.personal);
@@ -25,11 +26,11 @@ function App() {
     to: '',
     desc: '',
   });
-  const [edit, setEdit] = useState(True);
+  const [readOnly, setReadOnly] = useState(false);
 
   const handleInputChange = (e, setState) => {
     console.log('Change event triggered');
-    const { name, value } = e.target;
+    let { name, value } = e.target;
     setState(prevState => ({
       ...prevState,
       [name]: value,
@@ -41,31 +42,16 @@ function App() {
     setState(prev => [...prev, obj]);
   };
 
-  console.log(expData);
-  console.log(experience);
-
   return (
     <div className="container">
       <div className="form-container">
-        <form action="">
-          <PersonalInfoForm
-            personalInfo={personal}
-            onPersonalInfoChange={e => handleInputChange(e, setPersonal)}
-          />
-          <EducationForm
-            education={educationData}
-            onButtonClick={e => handleAdd(e, setEducation, educationData)}
-            onEducationChange={e => handleInputChange(e, setEducationData)}
-          />
-          <ExperienceForm
-            data={expData}
-            j
-            onAdd={e => handleAdd(e, setExperience, expData)}
-            onInputChange={e => handleInputChange(e, setExpData)}
-          />
-          <button>Edit</button>
-          <button>Submit</button>
-        </form>
+        <Menu/>
+        <PersonalInfoForm
+          personalInfo={personal}
+          canEdit={readOnly}
+          onPersonalInfoChange={e => handleInputChange(e, setPersonal)}
+        />
+        <Footer/>
       </div>
       <div className="cv-container">
         <PersonalInfoSection

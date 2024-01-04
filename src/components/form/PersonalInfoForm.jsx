@@ -1,38 +1,63 @@
 import React, { useState } from 'react';
-function PersonalInfoForm({ personalInfo, onPersonalInfoChange }) {
+import '../../styles/PersonalInfoForm.css';
+function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
   return (
-    <fieldset action="">
-      <input
-        type="text"
-        name="name"
-        value={personalInfo.name}
-        onChange={onPersonalInfoChange}
-      />
-      <input
-        type="text"
-        name="lastName"
-        value={personalInfo.lastName}
-        onChange={onPersonalInfoChange}
-      />
-      <input
-        type="text"
-        name="email"
-        value={personalInfo.email}
-        onChange={onPersonalInfoChange}
-      />
-      <input
-        type="text"
-        name="phone"
-        value={personalInfo.phone}
-        onChange={onPersonalInfoChange}
-      />
-      <input
-        type="text"
-        name="age"
-        value={personalInfo.age}
-        onChange={onPersonalInfoChange}
-      />
-    </fieldset>
+    <div className="personal-container">
+      <h1>Personal Information</h1>
+      <form className="personal-form">
+        <div>
+          <label htmlFor="name">First Name</label>
+          <input
+            type="text"
+            name="name"
+            value={personalInfo.name}
+            onChange={onPersonalInfoChange}
+            readOnly={canEdit}
+          />
+        </div>
+        <div>
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            value={personalInfo.lastName}
+            onChange={onPersonalInfoChange}
+            readOnly={canEdit}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">E-Mail</label>
+          <input
+            type="text"
+            name="email"
+            value={personalInfo.email}
+            onChange={onPersonalInfoChange}
+            readOnly={canEdit}
+          />
+        </div>
+        <div>
+          <label htmlFor="phone">Phone</label>
+          <input
+            type="text"
+            name="phone"
+            value={personalInfo.phone}
+            onChange={onPersonalInfoChange}
+            readOnly={canEdit}
+          />
+        </div>
+        <div>
+          <label htmlFor="age">Age</label>
+          <input
+            type="text"
+            name="age"
+            value={personalInfo.age}
+            onChange={onPersonalInfoChange}
+            readOnly={canEdit}
+          />
+        </div>
+      </form>
+      <input type="button" className="button" value="Save" />
+    </div>
   );
 }
 

@@ -1,36 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-function EducationForm({ education, onButtonClick, onEducationChange }) {
+function EducationForm({ education, data, onButtonClick, onEducationChange }) {
+  const [valid, setValid] = useState(false);
+
+  useEffect(() => {
+    const isValid = Object.values(data).every(value => value.trim() !== '');
+    setValid(isValid);
+  }, [data]);
+
   return (
-    <fieldset action="">
-      <input
-        type="text"
-        name="name"
-        value={education.name}
-        onChange={onEducationChange}
-      />
-      <input
-        type="text"
-        name="title"
-        value={education.title}
-        onChange={onEducationChange}
-      />
-      <input
-        type="date"
-        name="from"
-        id="from"
-        value={education.from}
-        onChange={onEducationChange}
-      />
-      <input
-        type="date"
-        name="to"
-        id="to"
-        value={education.to}
-        onChange={onEducationChange}
-      />
-      <button onClick={onButtonClick}>Add</button>
-    </fieldset>
+    <div className="container">
+      <button onClick={onButtonClick} >+</button>
+      {education.map(item => (
+        <div key={uuidv4()}>
+          <div>
+            <div>{item.name}</div>
+            <div>{item.title}</div>
+            <div>
+              <span>{item.from} </span>-<span> {item.to}</span>
+            </div>
+            <button>X</button>
+          </div>
+          <form action="">
+            <input
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={onEducationChange}
+              required
+            />
+            <input
+              type="text"
+              name="title"
+              value={data.title}
+              onChange={onEducationChange}
+              required
+            />
+            <input
+              type="date"
+              name="from"
+              id="from"
+              value={data.from}
+              onChange={onEducationChange}
+              required
+            />
+            <input
+              type="date"
+              name="to"
+              id="to"
+              value={data.to}
+              onChange={onEducationChange}
+              required
+            />
+            <input
+              type="button"
+              value="Save"
+              onClick={onButtonClick}
+              disabled={!valid}
+            />
+          </form>
+        </div>
+      ))}
+    </div>
   );
 }
 

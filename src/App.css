@@ -1,14 +1,25 @@
 .container {
   display: flex;
   flex: 1;
+  height: 100vh;
 }
 
 .form-container {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: .5rem 1.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: 100%;
 }
 
 .cv-container {
   flex: 2;
+}
+
+.button {
+  color: #fff;
+  background-color: #0369a1;
+  padding: .75rem 2rem;
 }
