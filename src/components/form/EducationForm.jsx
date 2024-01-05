@@ -1,67 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
 
-function EducationForm({ education, data, onButtonClick, onEducationChange }) {
-  const [valid, setValid] = useState(false);
-
-  useEffect(() => {
-    const isValid = Object.values(data).every(value => value.trim() !== '');
-    setValid(isValid);
-  }, [data]);
-
+function EducationForm() {
   return (
-    <div className="container">
-      <button onClick={onButtonClick} >+</button>
-      {education.map(item => (
-        <div key={uuidv4()}>
-          <div>
-            <div>{item.name}</div>
-            <div>{item.title}</div>
-            <div>
-              <span>{item.from} </span>-<span> {item.to}</span>
-            </div>
-            <button>X</button>
-          </div>
-          <form action="">
-            <input
-              type="text"
-              name="name"
-              value={data.name}
-              onChange={onEducationChange}
-              required
-            />
-            <input
-              type="text"
-              name="title"
-              value={data.title}
-              onChange={onEducationChange}
-              required
-            />
-            <input
-              type="date"
-              name="from"
-              id="from"
-              value={data.from}
-              onChange={onEducationChange}
-              required
-            />
-            <input
-              type="date"
-              name="to"
-              id="to"
-              value={data.to}
-              onChange={onEducationChange}
-              required
-            />
-            <input
-              type="button"
-              value="Save"
-              onClick={onButtonClick}
-              disabled={!valid}
-            />
-          </form>
+    <div className="form">
+      <h1>Education</h1>
+      <div className="inputs">
+        <div>
+          <label htmlFor="name">First Name</label>
+          <input type="text" name="name" />
         </div>
-      ))}
+        <div>
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" name="lastName" />
+        </div>
+        <div>
+          <label htmlFor="email">E-Mail</label>
+          <input type="text" name="email" />
+        </div>
+        <div>
+          <label htmlFor="phone">Phone</label>
+          <input type="text" name="phone" />
+        </div>
+        <div>
+          <label htmlFor="age">Age</label>
+          <input type="text" name="age" />
+        </div>
+      </div>
+      <input type="button" className="button" value="Save" />
     </div>
   );
 }

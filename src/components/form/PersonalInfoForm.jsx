@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import '../../styles/PersonalInfoForm.css';
 function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
   return (
-    <div className="personal-container">
+    <div className="form">
       <h1>Personal Information</h1>
-      <form className="personal-form">
+      <form className="inputs">
         <div>
           <label htmlFor="name">First Name</label>
           <input

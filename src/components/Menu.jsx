@@ -1,37 +1,52 @@
-import React from 'react'
-import {v4 as uuidv4} from 'uuid';
-import user from '../assets/User.svg'
-import briefcase from '../assets/Briefcase.svg'
-import education from '../assets/AcademicCap.svg'
-import '../styles/Menu.css'
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { HiAcademicCap } from 'react-icons/hi2';
+import { HiUser } from 'react-icons/hi';
+import { HiBriefcase } from 'react-icons/hi';
+import '../styles/Menu.css';
 
-
-function Menu() {
+function Menu({ onSelect, selected }) {
   const items = [
     {
-      title: "Personal Information",
-      icon: user
+      id: 'personal',
+      title: 'Personal Information',
+      icon: <HiUser className="icon" />,
     },
     {
-      title: "Education",
-      icon: education
+      id: 'education',
+      title: 'Education',
+      icon: <HiAcademicCap className="icon" />,
     },
     {
-      title: "Experience",
-      icon: briefcase
+      id: 'experience',
+      title: 'Experience',
+      icon: <HiBriefcase className="icon" />,
     },
-  ]
-    
+  ];
+
+  const handleItemClick = e => {
+    onSelect(e); // Pass the event to onSelect
+  };
+
   return (
-    <div className='menu-container'>
+    <div className="menu-container">
       {items.map(item => (
-        <div className="singleItem" key={uuidv4()}>
-          <img src={item.icon} alt="img" className='icon' />
-          <h3 className='menu-title'>{item.title}</h3>
+        <div
+          className="singleItem"
+          id={item.id}
+          key={uuidv4()}
+          onClick={handleItemClick}
+          style={{
+            backgroundColor: selected === item.id ? '#f3f4f6' : '#fff',
+            color: selected === item.id ? '#2563eb' : 'black',
+          }}
+        >
+          {item.icon}
+          <h3 className="menu-title">{item.title}</h3>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Menu
+export default Menu;

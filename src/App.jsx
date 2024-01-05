@@ -8,6 +8,7 @@ import EducationSection from './components/cv/EducationSection';
 import ExperienceSection from './components/cv/ExperienceSection';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
+import ExperienceForm from './components/form/ExperienceForm';
 
 function App() {
   const [personal, setPersonal] = useState(data.personal);
@@ -27,6 +28,7 @@ function App() {
     desc: '',
   });
   const [readOnly, setReadOnly] = useState(false);
+  const [selected, setSelected] = useState('personal');
 
   const handleInputChange = (e, setState) => {
     console.log('Change event triggered');
@@ -42,27 +44,40 @@ function App() {
     setState(prev => [...prev, obj]);
   };
 
+  const handleSelect = e => {
+    if (e.target.id) {
+      setSelected(e.target.id);
+    }
+  };
+
+  console.log(selected);
   return (
     <div className="container">
       <div className="form-container">
-        <Menu/>
-        <PersonalInfoForm
-          personalInfo={personal}
-          canEdit={readOnly}
-          onPersonalInfoChange={e => handleInputChange(e, setPersonal)}
-        />
-        <Footer/>
+        <Menu onSelect={handleSelect} selected={selected} />
+        {selected === 'personal' && (
+          <PersonalInfoForm
+            personalInfo={personal}
+            canEdit={readOnly}
+            onPersonalInfoChange={e => handleInputChange(e, setPersonal)}
+          />
+        )}
+        {selected === 'education' && <EducationForm />}
+        {selected === 'experience' && <ExperienceForm />}
+        <Footer />
       </div>
       <div className="cv-container">
-        <PersonalInfoSection
-          name={personal.name}
-          lastName={personal.lastName}
-          email={personal.email}
-          phone={personal.phone}
-          age={personal.age}
-        />
-        <EducationSection />
-        <ExperienceSection />
+        <div className="cv">
+          <PersonalInfoSection
+            name={personal.name}
+            lastName={personal.lastName}
+            email={personal.email}
+            phone={personal.phone}
+            age={personal.age}
+          />
+          <EducationSection />
+          <ExperienceSection />
+        </div>
       </div>
     </div>
   );

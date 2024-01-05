@@ -21,6 +21,8 @@
 
 .singleItem:hover {
   background-color: #f3f4f6;
+  transform: scale(1.1);
+  transition: all .1s ease-in-out;
 }
 
 .menu-title {
