@@ -24,8 +24,8 @@ function Menu({ onSelect, selected }) {
     },
   ];
 
-  const handleItemClick = e => {
-    onSelect(e); // Pass the event to onSelect
+  const handleItemClick = id => {
+    onSelect(id);
   };
 
   return (
