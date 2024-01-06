@@ -22,11 +22,15 @@
   padding: 0.75rem 2rem;
 }
 
-input {
+input, textarea {
   background-color: #f4f4f5;
   border-radius: 0.375rem;
   padding: 0.75rem 0.25rem;
   border: 1px solid #d1d5db;
+}
+
+textarea {
+  resize: none;
 }
 
 .cv-container {
@@ -40,6 +44,7 @@ input {
 }
 
 .cv {
+  padding: 1.5rem;
   background-color: #fff;
   min-width: 210mm;
   min-height: 297mm;

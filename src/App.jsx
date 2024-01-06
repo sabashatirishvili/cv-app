@@ -73,7 +73,7 @@ function App() {
             lastName={personal.lastName}
             email={personal.email}
             phone={personal.phone}
-            age={personal.age}
+            age={personal.address}
           />
           <EducationSection />
           <ExperienceSection />
