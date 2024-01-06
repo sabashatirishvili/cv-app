@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/form/EducationForm.css'
 
 function EducationForm() {
   return (
@@ -6,24 +7,25 @@ function EducationForm() {
       <h1>Education</h1>
       <div className="inputs">
         <div>
-          <label htmlFor="name">First Name</label>
+          <label htmlFor="name">School</label>
           <input type="text" name="name" />
         </div>
         <div>
-          <label htmlFor="lastName">Last Name</label>
-          <input type="text" name="lastName" />
+          <label htmlFor="title">Title of Study</label>
+          <input type="text" name="title" />
         </div>
-        <div>
-          <label htmlFor="email">E-Mail</label>
-          <input type="text" name="email" />
-        </div>
-        <div>
-          <label htmlFor="phone">Phone</label>
-          <input type="text" name="phone" />
-        </div>
-        <div>
-          <label htmlFor="age">Age</label>
-          <input type="text" name="age" />
+        <h3 className='date-title'>
+          Date of Study
+        </h3>
+        <div className='date'>
+          <div className='from'>
+            <label htmlFor="from">From</label>
+            <input type="date" name="from" id="from" />
+          </div>
+          <div className='to'>
+            <label htmlFor="to">To</label>
+            <input type="date" name="to" id="to" />
+          </div>
         </div>
       </div>
       <input type="button" className="button" value="Save" />

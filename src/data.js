@@ -4,7 +4,7 @@ const data = {
     lastName: '',
     email: '',
     phone: '',
-    age: '',
+    address: '',
   },
   education: [
   ],

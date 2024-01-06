@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../../styles/PersonalInfoForm.css';
-function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
+import '../../styles/form/PersonalInfoForm.css';
+function PersonalInfoForm({ personalInfo, onPersonalInfoChange }) {
   return (
     <div className="form">
       <h1>Personal Information</h1>
@@ -12,7 +12,6 @@ function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
             name="name"
             value={personalInfo.name}
             onChange={onPersonalInfoChange}
-            readOnly={canEdit}
           />
         </div>
         <div>
@@ -22,7 +21,6 @@ function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
             name="lastName"
             value={personalInfo.lastName}
             onChange={onPersonalInfoChange}
-            readOnly={canEdit}
           />
         </div>
         <div>
@@ -32,7 +30,6 @@ function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
             name="email"
             value={personalInfo.email}
             onChange={onPersonalInfoChange}
-            readOnly={canEdit}
           />
         </div>
         <div>
@@ -42,17 +39,15 @@ function PersonalInfoForm({ personalInfo, canEdit, onPersonalInfoChange }) {
             name="phone"
             value={personalInfo.phone}
             onChange={onPersonalInfoChange}
-            readOnly={canEdit}
           />
         </div>
         <div>
-          <label htmlFor="age">Age</label>
+          <label htmlFor="age">Address</label>
           <input
             type="text"
-            name="age"
-            value={personalInfo.age}
+            name="address"
+            value={personalInfo.address}
             onChange={onPersonalInfoChange}
-            readOnly={canEdit}
           />
         </div>
       </form>
