@@ -24,9 +24,6 @@ function Menu({ onSelect, selected }) {
     },
   ];
 
-  const handleItemClick = id => {
-    onSelect(id);
-  };
 
   return (
     <div className="menu-container">
@@ -35,7 +32,7 @@ function Menu({ onSelect, selected }) {
           className="singleItem"
           id={item.id}
           key={uuidv4()}
-          onClick={handleItemClick}
+          onClick={() => onSelect(item.id)}
           style={{
             backgroundColor: selected === item.id ? '#f3f4f6' : '#fff',
             color: selected === item.id ? '#2563eb' : 'black',

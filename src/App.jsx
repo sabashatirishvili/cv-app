@@ -39,14 +39,9 @@ function App() {
     }));
   };
 
-  const handleAdd = (e, setState, obj) => {
-    e.preventDefault();
-    setState(prev => [...prev, obj]);
-  };
-
-  const handleSelect = e => {
-    if (e.target.id) {
-      setSelected(e.target.id);
+  const handleSelect = id => {
+    if (id) {
+      setSelected(id);
     }
   };
 
