@@ -7,21 +7,21 @@ import PersonalInfoSection from './components/cv/PersonalInfoSection';
 import EducationSection from './components/cv/EducationSection';
 import ExperienceSection from './components/cv/ExperienceSection';
 import Menu from './components/Menu';
-import Footer from './components/Footer';
 import ExperienceForm from './components/form/ExperienceForm';
+import FormGroup from './components/FormGroup';
 
 function App() {
   const [personal, setPersonal] = useState(data.personal);
   const [education, setEducation] = useState(data.education);
   const [educationData, setEducationData] = useState({
-    name: '',
-    title: '',
-    from: '',
-    to: '',
+    name: 'Harvard',
+    title: 'Bachelor of Arts',
+    from: '3',
+    to: '4',
   });
   const [experience, setExperience] = useState(data.experience);
   const [expData, setExpData] = useState({
-    company: '',
+    name: '',
     title: '',
     from: '',
     to: '',
@@ -57,9 +57,9 @@ function App() {
             onPersonalInfoChange={e => handleInputChange(e, setPersonal)}
           />
         )}
-        {selected === 'education' && <EducationForm />}
+        {/* {selected === 'education' && <EducationForm data={educationData}/>} */}
+        {selected === 'education' && <FormGroup data={education} type='education'/>}
         {selected === 'experience' && <ExperienceForm />}
-        <Footer />
       </div>
       <div className="cv-container">
         <div className="cv">
