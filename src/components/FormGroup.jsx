@@ -4,20 +4,19 @@ import EducationForm from './form/EducationForm';
 import ExperienceForm from './form/ExperienceForm';
 
 function FormGroup(data, type) {
-  console.log(data);
+  console.log('data:');
+  const info = data.data;
   return (
     <div className="form-group">
-      {/* <div className="forms">
-        {data.map(item => (
+      <div className="forms">
+        {info.map(item => (
           <Collapsed
             data={item}
-            formComponent={
-              type === 'education' ? <EducationForm data={item} /> : <ExperienceForm data={item} />
-            }
+            formComponent={<EducationForm data={item} />}
           />
         ))}
-      </div> */}
-      <button className="add"></button>
+      </div>
+      <button className="add">Add</button>
     </div>
   );
 }

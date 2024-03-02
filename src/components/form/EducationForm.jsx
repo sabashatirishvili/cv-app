@@ -9,21 +9,21 @@ function EducationForm({ data }) {
       <div className="inputs">
         <div>
           <label htmlFor="name">School</label>
-          <input type="text" name="name" />
+          <input type="text" name="name" value={data.name} />
         </div>
         <div>
           <label htmlFor="title">Title of Study</label>
-          <input type="text" name="title" />
+          <input type="text" name="title" value={data.title} />
         </div>
         <h3 className="date-title">Date of Study</h3>
         <div className="date">
           <div className="from">
             <label htmlFor="from">From</label>
-            <input type="date" name="from" id="from" />
+            <input type="date" name="from" id="from" value={data.from} />
           </div>
           <div className="to">
             <label htmlFor="to">To</label>
-            <input type="date" name="to" id="to" />
+            <input type="date" name="to" id="to" value={data.to} />
           </div>
         </div>
       </div>

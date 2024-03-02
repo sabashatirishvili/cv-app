@@ -3,6 +3,7 @@ import './App.css';
 import PersonalInfoForm from './components/form/PersonalInfoForm';
 import EducationForm from './components/form/EducationForm';
 import data from './data';
+import React from 'react';
 import PersonalInfoSection from './components/cv/PersonalInfoSection';
 import EducationSection from './components/cv/EducationSection';
 import ExperienceSection from './components/cv/ExperienceSection';
@@ -19,6 +20,7 @@ function App() {
     from: '3',
     to: '4',
   });
+  console.log(education);
   const [experience, setExperience] = useState(data.experience);
   const [expData, setExpData] = useState({
     name: '',
@@ -58,7 +60,9 @@ function App() {
           />
         )}
         {/* {selected === 'education' && <EducationForm data={educationData}/>} */}
-        {selected === 'education' && <FormGroup data={education} type='education'/>}
+        {selected === 'education' && (
+          <FormGroup data={education} type="education" />
+        )}
         {selected === 'experience' && <ExperienceForm />}
       </div>
       <div className="cv-container">
