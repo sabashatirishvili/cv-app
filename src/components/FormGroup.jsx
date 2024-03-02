@@ -1,7 +1,8 @@
 import React from 'react';
 import Collapsed from './Collapsed';
 import EducationForm from './form/EducationForm';
-import ExperienceForm from './form/ExperienceForm';
+import '../styles/formGroup.css';
+import { HiPlusCircle } from 'react-icons/hi';
 
 function FormGroup(data, type) {
   console.log('data:');
@@ -16,7 +17,10 @@ function FormGroup(data, type) {
           />
         ))}
       </div>
-      <button className="add">Add</button>
+    <button className='add'>
+      <HiPlusCircle className='plus-icon'/>
+      <span className='add-text'>Add new</span>
+    </button>
     </div>
   );
 }

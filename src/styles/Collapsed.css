@@ -5,6 +5,11 @@
   justify-content: space-around;
   gap: 2rem;
   background-color: #f3f4f6;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: .375rem;
+}
+
+.chevron {
+  width: 2rem;
+  height: 2rem;
 }

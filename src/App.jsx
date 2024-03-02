@@ -15,10 +15,10 @@ function App() {
   const [personal, setPersonal] = useState(data.personal);
   const [education, setEducation] = useState(data.education);
   const [educationData, setEducationData] = useState({
-    name: 'Harvard',
-    title: 'Bachelor of Arts',
-    from: '3',
-    to: '4',
+    name: '',
+    title: '',
+    from: '',
+    to: '',
   });
   console.log(education);
   const [experience, setExperience] = useState(data.experience);

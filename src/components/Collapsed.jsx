@@ -21,7 +21,7 @@ function Collapsed({ data, formComponent }) {
           <span>-</span>
           <span>{data.to}</span>
         </div>
-        {collapsed ? <HiChevronRight /> : <HiChevronDown />}
+        {collapsed ? <HiChevronRight className='chevron' /> : <HiChevronDown className='chevron'/>}
       </div>
       {!collapsed && formComponent}
     </div>

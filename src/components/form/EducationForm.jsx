@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/form/EducationForm.css';
 import Collapsed from '../Collapsed';
 
 function EducationForm({ data }) {
+  const [info, setInfo] = useState({
+    name: '',
+    title: '',
+    from: '',
+    to: '',
+  });
+
   return (
     <div className="form">
       <h1>Education</h1>
