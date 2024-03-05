@@ -21,9 +21,15 @@ function Collapsed({ data, formComponent }) {
           <span>-</span>
           <span>{data.to}</span>
         </div>
-        {collapsed ? <HiChevronRight /> : <HiChevronDown />}
+        {collapsed ? (
+          <HiChevronRight className="chevron" />
+        ) : (
+          <HiChevronRight className="chevron rotated" />
+        )}
       </div>
-      {!collapsed && formComponent}
+      <div className={`form-component ${collapsed ? 'opened' : ''}`}>
+        {formComponent}
+      </div>
     </div>
   );
 }

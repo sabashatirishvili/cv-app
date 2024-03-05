@@ -2,9 +2,42 @@
   display: flex;
   flex-flow: nowrap row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 2rem;
   background-color: #f3f4f6;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: .375rem;
+}
+
+.form-component {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.form-component.opened {
+  opacity: 1;
+  animation: expand .5s forwards;
+}
+
+
+.chevron {
+  width: 2rem;
+  height: 2rem;
+  transition: all .3s ease;
+}
+
+.chevron.rotated {
+  transform: rotate(90deg);
+}
+
+@keyframes expand {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: auto;
+  }
 }
