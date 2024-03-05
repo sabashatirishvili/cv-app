@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import PersonalInfoForm from './components/form/PersonalInfoForm';
-import EducationForm from './components/form/EducationForm';
 import data from './data';
 import React from 'react';
 import PersonalInfoSection from './components/cv/PersonalInfoSection';
@@ -47,6 +46,18 @@ function App() {
     }
   };
 
+  const handleEducationSave = (index, obj) => {
+    setEducation(prev => prev.map((item, i) => (i === index ? obj : item)));
+  };
+
+  const handleAdd = obj => {
+    setEducation(prev => [...prev, obj]);
+  };
+
+  const handleDelete = index => {
+    setEducation(prev => prev.filter((item, i) => index !== i));
+  };
+
   console.log(selected);
   return (
     <div className="container">
@@ -61,7 +72,13 @@ function App() {
         )}
         {/* {selected === 'education' && <EducationForm data={educationData}/>} */}
         {selected === 'education' && (
-          <FormGroup data={education} type="education" />
+          <FormGroup
+            data={education}
+            type="education"
+            onEducationSave={handleEducationSave}
+            onAdd={handleAdd}
+            onDelete={handleDelete}
+          />
         )}
         {selected === 'experience' && <ExperienceForm />}
       </div>
