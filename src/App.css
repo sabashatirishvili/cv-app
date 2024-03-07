@@ -21,6 +21,7 @@
   flex-direction: column;
   justify-content: center;
   gap: .5rem;
+  width: 100%;
 }
 .button {
   color: #fff;
@@ -45,12 +46,13 @@ textarea {
 }
 
 .cv-container {
+  /* display: flex;
+  flex-flow: column nowrap; */
   flex: 2;
   background-color: #f4f4f5;
   height: 100vh;
   padding: 2rem 2rem;
   display: flex;
-  justify-content: center;
   overflow-y: auto;
 }
 

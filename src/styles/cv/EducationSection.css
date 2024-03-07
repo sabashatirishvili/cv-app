@@ -1,0 +1,18 @@
+.edu-title {
+  font-size: 1.375rem;
+  border-bottom: solid black 2px;
+  margin-bottom: .5rem;
+}
+
+.edu-header > span {
+  font-size: 1.25rem;
+}
+
+.edu-header span:first-child {
+  font-weight: bold;
+}
+
+.edu-info > span {
+  font-weight: 400;
+  color: #4b5563;
+}

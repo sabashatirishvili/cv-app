@@ -7,27 +7,14 @@ import PersonalInfoSection from './components/cv/PersonalInfoSection';
 import EducationSection from './components/cv/EducationSection';
 import ExperienceSection from './components/cv/ExperienceSection';
 import Menu from './components/Menu';
-import ExperienceForm from './components/form/ExperienceForm';
 import FormGroup from './components/FormGroup';
+import SavePDF from './components/SavePDF';
 
 function App() {
   const [personal, setPersonal] = useState(data.personal);
   const [education, setEducation] = useState(data.education);
-  const [educationData, setEducationData] = useState({
-    name: '',
-    title: '',
-    from: '',
-    to: '',
-  });
   console.log(education);
   const [experience, setExperience] = useState(data.experience);
-  const [expData, setExpData] = useState({
-    name: '',
-    title: '',
-    from: '',
-    to: '',
-    desc: '',
-  });
   const [readOnly, setReadOnly] = useState(false);
   const [selected, setSelected] = useState('personal');
 
@@ -46,17 +33,22 @@ function App() {
     }
   };
 
-  const handleEducationSave = (index, obj) => {
-    setEducation(prev => prev.map((item, i) => (i === index ? obj : item)));
+  const handleSave = (index, obj, type) => {
+    type === 'education'
+      ? setEducation(prev => prev.map((item, i) => (i === index ? obj : item)))
+      : setExperience(prev => prev.map((item, i) => (i === index ? obj : item)))
   };
 
-  const handleAdd = obj => {
-    setEducation(prev => [...prev, obj]);
+  const handleAdd = (obj, type) => {
+    type === 'education'
+      ? setEducation(prev => [...prev, obj])
+      : setExperience(prev => [...prev, obj]);
   };
 
   const handleDelete = index => {
     setEducation(prev => prev.filter((item, i) => index !== i));
   };
+
 
   console.log(selected);
   return (
@@ -74,26 +66,31 @@ function App() {
         {selected === 'education' && (
           <FormGroup
             data={education}
-            type="education"
-            onEducationSave={handleEducationSave}
+            type={selected}
+            onSave={handleSave}
             onAdd={handleAdd}
             onDelete={handleDelete}
           />
         )}
-        {selected === 'experience' && <ExperienceForm />}
+        {selected === 'experience' && (
+          <FormGroup
+            data={experience}
+            type={selected}
+            onSave={handleSave}
+            onAdd={handleAdd}
+            onDelete={handleDelete}
+          />
+        )}
       </div>
       <div className="cv-container">
-        <div className="cv">
+        <div className="cv" id="cv">
           <PersonalInfoSection
-            name={personal.name}
-            lastName={personal.lastName}
-            email={personal.email}
-            phone={personal.phone}
-            age={personal.address}
+            data={personal}
           />
-          <EducationSection />
-          <ExperienceSection />
+          <EducationSection data={education}/>
+          <ExperienceSection data={experience} />
         </div>
+        <SavePDF/>
       </div>
     </div>
   );
