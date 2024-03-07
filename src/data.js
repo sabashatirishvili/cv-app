@@ -14,7 +14,7 @@ const data = {
       to: '2022-08-21',
     },
   ],
-  experience: {},
+  experience: [],
 };
 
 export default data;
