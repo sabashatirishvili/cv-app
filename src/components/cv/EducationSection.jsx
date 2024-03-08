@@ -1,20 +1,25 @@
 import React from 'react';
 import '../../styles/cv/EducationSection.css';
+import { v4 } from 'uuid';
 
 function EducationSection({ data }) {
+  const checkInfo = (obj) => obj.name && obj.title;
+  const checkYears = (obj) => obj.from && obj.to;
+
   return (
     <div>
-      <h1 className="edu-title">EDUCATION</h1>
+      {data.length > 0 && <h1 className="edu-title">EDUCATION</h1>}
 
       <div>
         {data.map(item => (
-          <div>
+          <div key={v4()}>
             <div className="edu-header">
-              <span>{item.name}</span> - <span>{item.title}</span>
+              {checkInfo(item) && <span>{item.name} - {item.title}</span>}
             </div>
             <div className="edu-info">
-              <span>{item.from.split('-')[0]}</span> -
-              <span> {item.to.split('-')[0]}</span>
+              {checkYears(item) && (
+                <span>{new Date(item.from).getFullYear()} - {new Date(item.to).getFullYear()}</span>
+              )}
             </div>
           </div>
         ))}
