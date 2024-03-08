@@ -68,7 +68,7 @@ function EducationForm({ data, onSave, onDelete, index }) {
           </div>
         </div>
       </div>
-      `<div className="control-buttons">
+      <div className="control-buttons">
         <input
           type="button"
           className="button save"
@@ -78,7 +78,7 @@ function EducationForm({ data, onSave, onDelete, index }) {
         <div className="delete">
           <HiTrash className="delete-icon" onClick={handleDelete} />
         </div>
-      </div>`
+      </div>
     </div>
   );
 }
